@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:ChatTranslator/ChatTranslator.xcodeproj">
+   </FileRef>
+   <Group
+      location = "container:"
+      name = "Core">
+      <FileRef
+         location = "group:DataComponents/DataComponents.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:UIComponents/UIComponents.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Features">
+      <FileRef
+         location = "group:Login/Login.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Profile/Profile.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Friend/Friend.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Chats/Chats.xcodeproj">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

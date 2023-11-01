@@ -37,7 +37,6 @@ public class ChatsViewController: UITableViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureViewController()
-        print("fetch chats aqui")
         fetchChats()
     }
     

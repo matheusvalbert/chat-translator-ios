@@ -15,6 +15,8 @@ end
 def fb
   pod 'FirebaseCore'
   pod 'FirebaseAuth'
+  pod 'FirebaseAnalytics'
+  pod 'FirebaseCrashlytics'
   pod 'FirebaseMessaging'
   pod 'GoogleSignIn'
 end

@@ -67,4 +67,8 @@ final class FriendRepositoryImpl: FriendRepository {
     func count(byStatus status: FriendStatus) async throws -> Int {
         return Int(try await friendDao.fetch(byStatus: .waiting).count)
     }
+    
+    func delete() async throws {
+        try await friendDao.delete()
+    }
 }

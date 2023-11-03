@@ -40,4 +40,8 @@ public final class UserService {
     func update(token: UpdateTokenRequest) async throws {
         let _ = try await session.fetch().request(Api.user(.updateToken).route, method: .put, parameters: token, encoder: encoder).validate().serializingDecodable(EmptyResponse.self, decoder: decoder).value
     }
+    
+    func delete() async throws {
+        let _ = try await session.fetch().request(Api.user(.delete).route, method: .delete).validate().serializingDecodable(EmptyResponse.self, decoder: decoder).value
+    }
 }

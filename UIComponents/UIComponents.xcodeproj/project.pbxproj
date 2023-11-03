@@ -23,6 +23,8 @@
 		D770E9CC2A8717DD0023BD44 /* CTIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D770E9CB2A8717DD0023BD44 /* CTIconButton.swift */; };
 		D7942A8E2ACCA3CE00A4EF9B /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7942A8D2ACCA3CE00A4EF9B /* Date+Ext.swift */; };
 		D79471592A97D6310015D863 /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79471582A97D6310015D863 /* FriendsCell.swift */; };
+		D7C7C1CD2AF5475B001F4971 /* DeleteAccountAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C7C1CC2AF5475B001F4971 /* DeleteAccountAlert.swift */; };
+		D7C7C1CF2AF58751001F4971 /* CTDataLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C7C1CE2AF58751001F4971 /* CTDataLoadingViewController.swift */; };
 		D7E15EAE2A7C3508009C2647 /* CTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E15EAD2A7C3508009C2647 /* CTTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +58,8 @@
 		D770E9CB2A8717DD0023BD44 /* CTIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTIconButton.swift; sourceTree = "<group>"; };
 		D7942A8D2ACCA3CE00A4EF9B /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		D79471582A97D6310015D863 /* FriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
+		D7C7C1CC2AF5475B001F4971 /* DeleteAccountAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountAlert.swift; sourceTree = "<group>"; };
+		D7C7C1CE2AF58751001F4971 /* CTDataLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTDataLoadingViewController.swift; sourceTree = "<group>"; };
 		D7E15EAD2A7C3508009C2647 /* CTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTTextField.swift; sourceTree = "<group>"; };
 		EB44D59804CDBC0FD48ADEC7 /* Pods_UIComponents_UIComponentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIComponents_UIComponentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6902D3D65ECA739926F7C14 /* Pods-UIComponents-UIComponentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIComponents-UIComponentsTests.release.xcconfig"; path = "Target Support Files/Pods-UIComponents-UIComponentsTests/Pods-UIComponents-UIComponentsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				D724C2092AB23EA40022865D /* ErrorAlert.swift */,
+				D7C7C1CC2AF5475B001F4971 /* DeleteAccountAlert.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				D76D57472A8A71EE0030FA92 /* CTScrollViewController.swift */,
+				D7C7C1CE2AF58751001F4971 /* CTDataLoadingViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -393,7 +399,9 @@
 				D7619B332A7710EA00024600 /* CTTitle.swift in Sources */,
 				D770E9CC2A8717DD0023BD44 /* CTIconButton.swift in Sources */,
 				D740DE042A7A9E72000A0605 /* Constants.swift in Sources */,
+				D7C7C1CF2AF58751001F4971 /* CTDataLoadingViewController.swift in Sources */,
 				D740DE082A7AA097000A0605 /* CTButton.swift in Sources */,
+				D7C7C1CD2AF5475B001F4971 /* DeleteAccountAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

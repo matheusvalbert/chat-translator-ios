@@ -11,6 +11,7 @@ import DataComponents
 import Chats
 import Profile
 import Friend
+import Login
 
 final class AppCoordinator: Coordinator {
     
@@ -107,6 +108,16 @@ extension AppCoordinator: FriendsViewControllerDelegate, ChatsViewControllerDele
         vc.viewModel = DIContainer.shared.resolve()
         let nc = UINavigationController(rootViewController: vc)
         profileNC?.present(nc, animated: true)
+    }
+    
+    func backToLogin() {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let window = windowScene.windows.first {
+                let loginCoordinaotor: LoginCoordinator = DIContainer.shared.resolve()
+                window.rootViewController = loginCoordinaotor.navigationController
+                loginCoordinaotor.start()
+            }
+        }
     }
     
     func navigateToFriendRequest() {

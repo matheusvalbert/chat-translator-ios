@@ -48,4 +48,8 @@ final class ChatRepositoryImpl: ChatRepository {
     func getUnreadMessagesCount() async throws -> Int {
         return Int(try await chatDao.fetch().reduce(0) { $0 + $1.unreadMessages })
     }
+    
+    func delete() async throws {
+        try await chatDao.delete()
+    }
 }

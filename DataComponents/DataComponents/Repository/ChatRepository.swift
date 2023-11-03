@@ -22,4 +22,6 @@ public protocol ChatRepository {
     func remove(tag: Int64) async throws
     
     func getUnreadMessagesCount() async throws -> Int
+    
+    func delete() async throws
 }

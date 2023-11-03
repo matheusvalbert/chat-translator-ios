@@ -40,6 +40,7 @@ enum UserRoute: String {
     case info = "/info"
     case update = "/update"
     case updateToken = "/update-token"
+    case delete = "/delete"
     
     var route: String {
         return UserRoute.prefix + self.rawValue

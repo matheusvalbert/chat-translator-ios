@@ -22,9 +22,9 @@ public class CTButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public convenience init(title: String, image: UIImage? = nil, style: UIButton.Configuration = UIButton.Configuration.filled(), activityIndicatorStyle: UIActivityIndicatorView.Style = .large) {
+    public convenience init(title: String, image: UIImage? = nil, style: UIButton.Configuration = UIButton.Configuration.filled(), activityIndicatorStyle: UIActivityIndicatorView.Style = .large, customTextColor: UIColor? = nil) {
         self.init(frame: .zero)
-        set(title: title, image: image, style: style, activityIndicatorStyle: activityIndicatorStyle)
+        set(title: title, image: image, style: style, activityIndicatorStyle: activityIndicatorStyle, customTextColor: customTextColor)
     }
     
     private func configure() {
@@ -34,12 +34,13 @@ public class CTButton: UIButton {
         configureActivityIndicator()
     }
     
-    private func set(title: String, image: UIImage?, style: UIButton.Configuration, activityIndicatorStyle: UIActivityIndicatorView.Style) {
+    private func set(title: String, image: UIImage?, style: UIButton.Configuration, activityIndicatorStyle: UIActivityIndicatorView.Style, customTextColor: UIColor?) {
         self.image = image
         self.text = title
         configuration = style
         configuration?.baseBackgroundColor = Colors.purple
-        configuration?.baseForegroundColor = style == .filled() ? .white : Colors.purple
+        let buttonColor = style == .filled() ? .white : Colors.purple
+        configuration?.baseForegroundColor = customTextColor == nil ? buttonColor : customTextColor
         configuration?.title = self.text
         configuration?.image = self.image
         activityIndicator.style = activityIndicatorStyle

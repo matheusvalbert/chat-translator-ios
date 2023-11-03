@@ -22,4 +22,6 @@ public protocol FriendRepository {
     func exists(byTag tag: Int64) async throws -> Bool
     
     func count(byStatus status: FriendStatus) async throws -> Int
+    
+    func delete() async throws
 }

@@ -13,13 +13,15 @@ public final class ProfileViewModel {
     private let fetchProfileUseCase: FetchProfileUseCase
     private let updateProfileUseCase: UpdateProfileUseCase
     private let fetchUserProfileFromServerUseCase: FetchUserProfileFromServerUseCase
+    private let deleteAccountUseCase: DeleteAccountUseCase
     
     var profile: UserDomain?
     
-    init(fetchProfileUseCase: FetchProfileUseCase, updateProfileUseCase: UpdateProfileUseCase, fetchUserProfileFromServerUseCase: FetchUserProfileFromServerUseCase) {
+    init(fetchProfileUseCase: FetchProfileUseCase, updateProfileUseCase: UpdateProfileUseCase, fetchUserProfileFromServerUseCase: FetchUserProfileFromServerUseCase, deleteAccountUseCase: DeleteAccountUseCase) {
         self.fetchProfileUseCase = fetchProfileUseCase
         self.updateProfileUseCase = updateProfileUseCase
         self.fetchUserProfileFromServerUseCase = fetchUserProfileFromServerUseCase
+        self.deleteAccountUseCase = deleteAccountUseCase
     }
     
     func fetchProfile() async {
@@ -43,6 +45,14 @@ public final class ProfileViewModel {
             try await updateProfileUseCase.execute(username: username, language: Languages(rawValue: language.lowercased())!)
         } catch {
             fatalError("User cannot be updated")
+        }
+    }
+    
+    func deleteAccount() async {
+        do {
+            try await deleteAccountUseCase.execute()
+        } catch {
+            fatalError("User cannot be deleted")
         }
     }
 }

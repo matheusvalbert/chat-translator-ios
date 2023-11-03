@@ -95,6 +95,15 @@ public final class MessageDao {
             try self.appDatabase.backgroundContext().execute(batchDeleteRequest)
             try self.appDatabase.getContext().save()
         }
+    }
+    
+    func delete() async throws {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: MessageEntity.name)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
+        try await appDatabase.backgroundContext().perform {
+            try self.appDatabase.backgroundContext().execute(deleteRequest)
+            try self.appDatabase.getContext().save()
+        }
     }
 }

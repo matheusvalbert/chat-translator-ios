@@ -10,12 +10,16 @@ import UIComponents
 
 public protocol ProfileViewControllerDelegate: AnyObject {
     func openEditProfileModal()
+    func backToLogin()
 }
 
 public class ProfileViewController: CTScrollViewController {
     
     let refreshControl = UIRefreshControl()
     let profile = CTProfileView()
+    let deleteAccount = CTButton(title: "Delete account", style: .plain(), customTextColor: .systemRed)
+    let deleteAccountAlert = DeleteAccountAlert.make()
+    var loadingView: CTDataLoadingViewController?
     
     public var viewModel: ProfileViewModel?
     public weak var delegate: ProfileViewControllerDelegate?
@@ -46,12 +50,19 @@ public class ProfileViewController: CTScrollViewController {
     
     private func configure() {
         contentView.addSubview(profile)
+        contentView.addSubview(deleteAccount)
         
         NSLayoutConstraint.activate([
             profile.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
             profile.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             profile.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             profile.heightAnchor.constraint(equalToConstant: 120),
+            
+            deleteAccount.topAnchor.constraint(equalTo: profile.bottomAnchor, constant: 10),
+            deleteAccount.leadingAnchor.constraint(equalTo: profile.leadingAnchor),
+            deleteAccount.trailingAnchor.constraint(equalTo: profile.trailingAnchor),
+            deleteAccount.heightAnchor.constraint(equalToConstant: 40),
+            
         ])
     }
     
@@ -73,7 +84,8 @@ public class ProfileViewController: CTScrollViewController {
 
 extension ProfileViewController {
     private func actions() {
-        profile.button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        profile.button.addTarget(self, action: #selector(profileButtonAction), for: .touchUpInside)
+        deleteAccount.addTarget(self, action: #selector(deleteAccountButtonAction), for: .touchUpInside)
     }
     
     @objc private func refreshUser() {
@@ -84,7 +96,7 @@ extension ProfileViewController {
         }
     }
     
-    @objc private func buttonAction() {
+    @objc private func profileButtonAction() {
         if refreshControl.isRefreshing {
             refreshControl.endRefreshing()
             
@@ -94,6 +106,37 @@ extension ProfileViewController {
         } else {
             delegate?.openEditProfileModal()
         }
+    }
+    
+    @objc private func deleteAccountButtonAction() {
+        
+        present(deleteAccountAlert, animated: true, completion: nil)
+        
+        deleteAccountAlert.deleteAccount = {
+            Task {
+                self.startLoading()
+                await self.viewModel?.deleteAccount()
+                self.stopLoading()
+                self.delegate?.backToLogin()
+            }
+        }
+    }
+    
+    private func startLoading() {
+        tabBarController?.tabBar.isHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        view.layoutIfNeeded()
+        scrollView.removeFromSuperview()
+        loadingView = CTDataLoadingViewController(frame: view.bounds)
+        view.addSubview(loadingView!)
+    }
+    
+    private func stopLoading() {
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        loadingView?.removeFromSuperview()
+        self.view.layoutIfNeeded()
+        super.viewDidLoad()
     }
     
     @objc private func closeEditProfileModal() {

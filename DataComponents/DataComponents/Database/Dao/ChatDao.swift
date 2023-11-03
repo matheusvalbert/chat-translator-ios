@@ -102,4 +102,14 @@ public final class ChatDao {
             }
         }
     }
+    
+    func delete() async throws {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: ChatEntity.name)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        try await appDatabase.backgroundContext().perform {
+            try self.appDatabase.backgroundContext().execute(deleteRequest)
+            try self.appDatabase.getContext().save()
+        }
+    }
 }

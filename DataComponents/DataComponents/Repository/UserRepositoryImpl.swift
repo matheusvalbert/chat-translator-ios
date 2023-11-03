@@ -57,4 +57,9 @@ final class UserRepositoryImpl: UserRepository {
             FirebaseToken.update(token: token)
         }
     }
+    
+    func delete() async throws {
+        try await userService.delete()
+        try await userDao.delete()
+    }
 }

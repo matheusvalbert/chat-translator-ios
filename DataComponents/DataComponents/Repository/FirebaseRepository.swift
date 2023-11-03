@@ -24,5 +24,5 @@ public protocol FirebaseRepository {
     
     func fetchToken(auth: AuthDataResult) async throws -> String
     
-    func sendMessageToken()
+    func deleteAccount() async throws
 }

@@ -22,6 +22,8 @@
 		D76CDC932AA278DF00ADACBB /* FetchProfileUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CDC922AA278DF00ADACBB /* FetchProfileUseCaseImpl.swift */; };
 		D77352212AF180760038C61B /* Pods_Profile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0E97C47B78B44B0120D9ACF /* Pods_Profile.framework */; };
 		D78C65A52A883CCB003E7E16 /* CTProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78C65A42A883CCB003E7E16 /* CTProfileView.swift */; };
+		D7C7C1C92AF545F6001F4971 /* DeleteAccountUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C7C1C82AF545F6001F4971 /* DeleteAccountUseCase.swift */; };
+		D7C7C1CB2AF54654001F4971 /* DeleteAccountUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C7C1CA2AF54654001F4971 /* DeleteAccountUseCaseImpl.swift */; };
 		D7E808EF2A813DDB0058AEDB /* Profile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E808E62A813DDB0058AEDB /* Profile.framework */; };
 		D7E808F42A813DDB0058AEDB /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E808F32A813DDB0058AEDB /* ProfileTests.swift */; };
 		D7E808FF2A813DEF0058AEDB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E808FE2A813DEF0058AEDB /* ProfileViewController.swift */; };
@@ -58,6 +60,8 @@
 		D77352242AF180FC0038C61B /* Profile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Profile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D78C65A42A883CCB003E7E16 /* CTProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTProfileView.swift; sourceTree = "<group>"; };
 		D7BEA5822AA6597F00AA4FC5 /* DataComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7C7C1C82AF545F6001F4971 /* DeleteAccountUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountUseCase.swift; sourceTree = "<group>"; };
+		D7C7C1CA2AF54654001F4971 /* DeleteAccountUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountUseCaseImpl.swift; sourceTree = "<group>"; };
 		D7E808E62A813DDB0058AEDB /* Profile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Profile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E808EE2A813DDB0058AEDB /* ProfileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProfileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E808F32A813DDB0058AEDB /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 				D73C35F52AAB78BA006FF696 /* FetchUserProfileFromServerUseCaseImpl.swift */,
 				D74F079D2AA8F6A10079BA50 /* UpdateProfileUseCase.swift */,
 				D74F079F2AA8F6FF0079BA50 /* UpdateProfileUseCaseImpl.swift */,
+				D7C7C1C82AF545F6001F4971 /* DeleteAccountUseCase.swift */,
+				D7C7C1CA2AF54654001F4971 /* DeleteAccountUseCaseImpl.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -360,8 +366,10 @@
 			files = (
 				D73C35F42AAB78A7006FF696 /* FetchUserProfileFromServerUseCase.swift in Sources */,
 				D76CDC912AA2788700ADACBB /* FetchProfileUseCase.swift in Sources */,
+				D7C7C1CB2AF54654001F4971 /* DeleteAccountUseCaseImpl.swift in Sources */,
 				D7E808FF2A813DEF0058AEDB /* ProfileViewController.swift in Sources */,
 				D72B34212A887524004127BD /* CTLanguagePickerView.swift in Sources */,
+				D7C7C1C92AF545F6001F4971 /* DeleteAccountUseCase.swift in Sources */,
 				D78C65A52A883CCB003E7E16 /* CTProfileView.swift in Sources */,
 				D72B341B2A884EFF004127BD /* EditProfileViewController.swift in Sources */,
 				D73C35F62AAB78BA006FF696 /* FetchUserProfileFromServerUseCaseImpl.swift in Sources */,

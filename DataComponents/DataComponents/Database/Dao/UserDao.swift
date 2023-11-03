@@ -61,4 +61,14 @@ public final class UserDao {
         }
         return count > 0 ? true : false
     }
+    
+    func delete() async throws {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: UserEntity.name)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        try await appDatabase.backgroundContext().perform {
+            try self.appDatabase.backgroundContext().execute(deleteRequest)
+            try self.appDatabase.getContext().save()
+        }
+    }
 }

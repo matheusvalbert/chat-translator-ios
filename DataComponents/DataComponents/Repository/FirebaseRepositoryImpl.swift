@@ -51,7 +51,7 @@ class FirebaseRepositoryImpl: FirebaseRepository {
         return try await auth.user.getIDTokenResult().token
     }
     
-    func sendMessageToken() {
-        
+    func deleteAccount() async throws {
+        try await Auth.auth().currentUser?.delete()
     }
 }

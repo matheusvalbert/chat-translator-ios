@@ -72,4 +72,8 @@ final class MessageRepositoryImpl: MessageRepository {
     func remove(tag: Int64) async throws {
         try await messageDao.remove(byTag: tag)
     }
+    
+    func delete() async throws {
+        try await messageDao.delete()
+    }
 }

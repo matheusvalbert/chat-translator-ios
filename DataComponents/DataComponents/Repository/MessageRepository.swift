@@ -18,4 +18,6 @@ public protocol MessageRepository {
     func receive() async throws -> [MessageDomain]
     
     func remove(tag: Int64) async throws
+    
+    func delete() async throws
 }

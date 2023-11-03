@@ -24,4 +24,6 @@ public protocol UserRepository {
     func insert(username: String, tag: Int64, language: Languages) async throws
     
     func insert(token: String)
+    
+    func delete() async throws
 }

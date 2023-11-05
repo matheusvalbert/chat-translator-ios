@@ -13,7 +13,7 @@ import AuthenticationServices
 
 class FirebaseRepositoryImpl: NSObject, FirebaseRepository {
     
-    private var appleSignInCompletion: CheckedContinuation<ASAuthorizationAppleIDCredential, Error>?
+    private let controllerDelegate = AppleSignInAuthorizationControllerDelegate()
     private let presentationProvider = AppleSignInPresentationProvider()
     
     func configureId() {
@@ -64,12 +64,12 @@ class FirebaseRepositoryImpl: NSObject, FirebaseRepository {
         request.nonce = nonce
 
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.delegate = self
+        authorizationController.delegate = controllerDelegate
         authorizationController.presentationContextProvider = presentationProvider
 
         do {
             let credential = try await withCheckedThrowingContinuation { continuation in
-                self.appleSignInCompletion = continuation
+                controllerDelegate.appleSignInCompletion = continuation
                 authorizationController.performRequests()
             }
             return credential
@@ -84,19 +84,5 @@ class FirebaseRepositoryImpl: NSObject, FirebaseRepository {
     
     func deleteAccount() async throws {
         try await Auth.auth().currentUser?.delete()
-    }
-}
-
-extension FirebaseRepositoryImpl: ASAuthorizationControllerDelegate {
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            appleSignInCompletion?.resume(returning: appleIDCredential)
-            appleSignInCompletion = nil
-        }
-    }
-
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        appleSignInCompletion?.resume(throwing: error)
-        appleSignInCompletion = nil
     }
 }

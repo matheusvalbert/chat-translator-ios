@@ -37,6 +37,7 @@
 		D73E13382AB9DC54001A2509 /* ChatRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E13372AB9DC54001A2509 /* ChatRepositoryImpl.swift */; };
 		D73E133A2AB9DC73001A2509 /* MessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E13392AB9DC73001A2509 /* MessageRepository.swift */; };
 		D73E133C2AB9DC87001A2509 /* MessageRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E133B2AB9DC87001A2509 /* MessageRepositoryImpl.swift */; };
+		D746584A2AF7EB68004D3476 /* AppleSignInAuthorizationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74658492AF7EB68004D3476 /* AppleSignInAuthorizationControllerDelegate.swift */; };
 		D75E0DFB2AE93BA800492EA7 /* ChatEventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E0DFA2AE93BA800492EA7 /* ChatEventBus.swift */; };
 		D7682CE92ABCCD4400ADC15A /* Send.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7682CE82ABCCD4400ADC15A /* Send.swift */; };
 		D7682CF12ABCDDD600ADC15A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7682CF02ABCDDD600ADC15A /* Message.swift */; };
@@ -140,6 +141,7 @@
 		D73E13372AB9DC54001A2509 /* ChatRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepositoryImpl.swift; sourceTree = "<group>"; };
 		D73E13392AB9DC73001A2509 /* MessageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRepository.swift; sourceTree = "<group>"; };
 		D73E133B2AB9DC87001A2509 /* MessageRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRepositoryImpl.swift; sourceTree = "<group>"; };
+		D74658492AF7EB68004D3476 /* AppleSignInAuthorizationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInAuthorizationControllerDelegate.swift; sourceTree = "<group>"; };
 		D75E0DFA2AE93BA800492EA7 /* ChatEventBus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEventBus.swift; sourceTree = "<group>"; };
 		D7682CE82ABCCD4400ADC15A /* Send.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Send.swift; sourceTree = "<group>"; };
 		D7682CF02ABCDDD600ADC15A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -324,6 +326,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D74658482AF7EB3C004D3476 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				D7AD11DF2AF72E06005D6A83 /* AppleSignInPresentationProvider.swift */,
+				D74658492AF7EB68004D3476 /* AppleSignInAuthorizationControllerDelegate.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
 		D77557662A994CC6003239EB /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,14 +491,6 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		D7AD11E12AF7329C005D6A83 /* Provider */ = {
-			isa = PBXGroup;
-			children = (
-				D7AD11DF2AF72E06005D6A83 /* AppleSignInPresentationProvider.swift */,
-			);
-			path = Provider;
-			sourceTree = "<group>";
-		};
 		D7B92D142ACB4DC200CC56C8 /* Event */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,7 +523,7 @@
 		D7BCFDB62A9D169B0041F339 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				D7AD11E12AF7329C005D6A83 /* Provider */,
+				D74658482AF7EB3C004D3476 /* Authorization */,
 				D70458A72AB0ED5E008A950F /* Error */,
 				D70458A82AB0EDAA008A950F /* Extension */,
 				D70458AB2AB0F071008A950F /* Enums */,
@@ -750,6 +753,7 @@
 				D7682CE92ABCCD4400ADC15A /* Send.swift in Sources */,
 				D7135ED22AAFBAAA00EE6DC8 /* Encodable+Ext.swift in Sources */,
 				D73343232AA7BA7C00894ABF /* EmptyResponse.swift in Sources */,
+				D746584A2AF7EB68004D3476 /* AppleSignInAuthorizationControllerDelegate.swift in Sources */,
 				D703849E2AE8538B006C62FA /* SendMessageUseCase.swift in Sources */,
 				D79DF39F2AE708100012C4DF /* FriendMessage.swift in Sources */,
 				D79DF38F2AE6EC370012C4DF /* FirebaseToken.swift in Sources */,

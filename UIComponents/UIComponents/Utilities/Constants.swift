@@ -19,6 +19,7 @@ public enum Images {
 }
 
 public enum Icons {
+    public static let apple = UIImage(systemName: "apple.logo", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40, weight: .bold, scale: .large))!
     public static let chats = UIImage(systemName: "bubble.left.and.bubble.right")!
     public static let chatsSelected = UIImage(systemName: "bubble.left.and.bubble.right.fill")!
     public static let profile = UIImage(systemName: "person.crop.circle")!

@@ -9,8 +9,12 @@ import Foundation
 import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
+import AuthenticationServices
 
-class FirebaseRepositoryImpl: FirebaseRepository {
+class FirebaseRepositoryImpl: NSObject, FirebaseRepository {
+    
+    private var appleSignInCompletion: CheckedContinuation<ASAuthorizationAppleIDCredential, Error>?
+    private let presentationProvider = AppleSignInPresentationProvider()
     
     func configureId() {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
@@ -31,7 +35,6 @@ class FirebaseRepositoryImpl: FirebaseRepository {
     }
     
     func loginWithGoogle() async throws -> AuthDataResult {
-        
         let result = try await signInWithGoogle()
         let user = result.user
         
@@ -41,10 +44,38 @@ class FirebaseRepositoryImpl: FirebaseRepository {
     }
     
     @MainActor
-    func signInWithGoogle() async throws -> GIDSignInResult {
+    private func signInWithGoogle() async throws -> GIDSignInResult {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { throw FirebaseError.recoveryUIViewControllerError }
         guard let rootViewController = windowScene.windows.first?.rootViewController else { throw FirebaseError.recoveryUIViewControllerError }
         return try await GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController)
+    }
+    
+    func loginWithApple() async throws -> AuthDataResult {
+        let nonce = String().randomNonceString()
+        let result = try await signInWithApple(nonce: nonce.sha256())
+        let credential = OAuthProvider.appleCredential(withIDToken: String(data: result.identityToken!, encoding: .utf8)!, rawNonce: nonce, fullName: result.fullName)
+        return try await Auth.auth().signIn(with: credential)
+    }
+    
+    private func signInWithApple(nonce: String) async throws -> ASAuthorizationAppleIDCredential {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        request.nonce = nonce
+
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = presentationProvider
+
+        do {
+            let credential = try await withCheckedThrowingContinuation { continuation in
+                self.appleSignInCompletion = continuation
+                authorizationController.performRequests()
+            }
+            return credential
+        } catch {
+            throw error
+        }
     }
     
     func fetchToken(auth: AuthDataResult) async throws -> String {
@@ -53,5 +84,19 @@ class FirebaseRepositoryImpl: FirebaseRepository {
     
     func deleteAccount() async throws {
         try await Auth.auth().currentUser?.delete()
+    }
+}
+
+extension FirebaseRepositoryImpl: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            appleSignInCompletion?.resume(returning: appleIDCredential)
+            appleSignInCompletion = nil
+        }
+    }
+
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        appleSignInCompletion?.resume(throwing: error)
+        appleSignInCompletion = nil
     }
 }

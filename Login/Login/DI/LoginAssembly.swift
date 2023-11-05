@@ -39,6 +39,22 @@ public final class LoginAssembly: Assembly {
             return LoginWithGoogleUseCaseImpl(firebaseRepository: firebaseRepository, userRepository: userRepository, friendRepository: friendRepository)
         }
         
+        container.register(LoginWithAppleUseCase.self) { resolver in
+            guard let firebaseRepository = resolver.resolve(FirebaseRepository.self) else {
+                fatalError("firebase repository dependency could not be resolved")
+            }
+            
+            guard let userRepository = resolver.resolve(UserRepository.self) else {
+                fatalError("user repository dependency could not be resolved")
+            }
+            
+            guard let friendRepository = resolver.resolve(FriendRepository.self) else {
+                fatalError("friend repository dependency could not be resolved")
+            }
+            
+            return LoginWithAppleUseCaseImpl(firebaseRepository: firebaseRepository, userRepository: userRepository, friendRepository: friendRepository)
+        }
+        
         container.register(SignUpUseCase.self) { resolver in
             guard let firebaseRepository = resolver.resolve(FirebaseRepository.self) else {
                 fatalError("firebase repository dependency could not be resolved")
@@ -85,7 +101,11 @@ public final class LoginAssembly: Assembly {
             }
             
             guard let loginWithGoogleUseCase = resolver.resolve(LoginWithGoogleUseCase.self) else {
-                fatalError("configure google id use case dependency could not be resolved")
+                fatalError("login with google use case dependency could not be resolved")
+            }
+            
+            guard let loginWithAppleUseCase = resolver.resolve(LoginWithAppleUseCase.self) else {
+                fatalError("login with google use case dependency could not be resolved")
             }
             
             guard let signUpUseCase = resolver.resolve(SignUpUseCase.self) else {
@@ -103,6 +123,7 @@ public final class LoginAssembly: Assembly {
             return LoginViewModel(
                 configureGoogleIdUseCase: configureGoogleIdUseCase,
                 loginWithGoogleUseCase: loginWithGoogleUseCase,
+                loginWithAppleUseCase: loginWithAppleUseCase,
                 signUpUseCase: signUpUseCase,
                 signInUseCase: signInUseCase,
                 forgotPasswordUseCase: forgotPasswordUseCase

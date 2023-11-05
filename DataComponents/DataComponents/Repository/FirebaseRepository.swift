@@ -9,6 +9,7 @@ import Foundation
 import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
+import AuthenticationServices
 
 public protocol FirebaseRepository {
     
@@ -21,6 +22,8 @@ public protocol FirebaseRepository {
     func forgotPassword(email: String) async throws
     
     func loginWithGoogle() async throws -> AuthDataResult
+    
+    func loginWithApple() async throws -> AuthDataResult
     
     func fetchToken(auth: AuthDataResult) async throws -> String
     

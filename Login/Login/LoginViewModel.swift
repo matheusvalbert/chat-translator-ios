@@ -12,13 +12,15 @@ public final class LoginViewModel {
     
     private let configureGoogleIdUseCase: ConfigureGoogleIdUseCase
     private let loginWithGoogleUseCase: LoginWithGoogleUseCase
+    private let loginWithAppleUseCase: LoginWithAppleUseCase
     private let signUpUseCase: SignUpUseCase
     private let signInUseCase: SignInUseCase
     private let forgotPasswordUseCase: ForgotPasswordUseCase
     
-    required init(configureGoogleIdUseCase: ConfigureGoogleIdUseCase, loginWithGoogleUseCase: LoginWithGoogleUseCase, signUpUseCase: SignUpUseCase, signInUseCase: SignInUseCase, forgotPasswordUseCase: ForgotPasswordUseCase) {
+    required init(configureGoogleIdUseCase: ConfigureGoogleIdUseCase, loginWithGoogleUseCase: LoginWithGoogleUseCase, loginWithAppleUseCase: LoginWithAppleUseCase, signUpUseCase: SignUpUseCase, signInUseCase: SignInUseCase, forgotPasswordUseCase: ForgotPasswordUseCase) {
         self.configureGoogleIdUseCase = configureGoogleIdUseCase
         self.loginWithGoogleUseCase = loginWithGoogleUseCase
+        self.loginWithAppleUseCase = loginWithAppleUseCase
         self.signUpUseCase = signUpUseCase
         self.signInUseCase = signInUseCase
         self.forgotPasswordUseCase = forgotPasswordUseCase
@@ -30,6 +32,10 @@ public final class LoginViewModel {
     
     func loginWithGoogle() async throws {
         try await loginWithGoogleUseCase.execute()
+    }
+    
+    func loginWithApple() async throws {
+        try await loginWithAppleUseCase.execute()
     }
     
     func signUp(username: String, email: String, password: String) async -> Bool {

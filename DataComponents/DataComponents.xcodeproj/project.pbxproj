@@ -68,6 +68,7 @@
 		D79DF3A12AE7086E0012C4DF /* MessageMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79DF3A02AE7086E0012C4DF /* MessageMessage.swift */; };
 		D7A07FAD2ACDF02E0045068C /* Receive.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A07FAC2ACDF02E0045068C /* Receive.swift */; };
 		D7A192082ABB777700D2B13E /* SenderOrReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A192072ABB777700D2B13E /* SenderOrReceiver.swift */; };
+		D7AD11E02AF72E06005D6A83 /* AppleSignInPresentationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AD11DF2AF72E06005D6A83 /* AppleSignInPresentationProvider.swift */; };
 		D7B92D162ACB4DDF00CC56C8 /* MessageEventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B92D152ACB4DDF00CC56C8 /* MessageEventBus.swift */; };
 		D7B92D182ACB4EF700CC56C8 /* EventAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B92D172ACB4EF700CC56C8 /* EventAssembly.swift */; };
 		D7BAFB292AF1CE9200D30C70 /* MessageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BAFB282AF1CE9200D30C70 /* MessageCategory.swift */; };
@@ -170,6 +171,7 @@
 		D79DF3A02AE7086E0012C4DF /* MessageMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMessage.swift; sourceTree = "<group>"; };
 		D7A07FAC2ACDF02E0045068C /* Receive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receive.swift; sourceTree = "<group>"; };
 		D7A192072ABB777700D2B13E /* SenderOrReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderOrReceiver.swift; sourceTree = "<group>"; };
+		D7AD11DF2AF72E06005D6A83 /* AppleSignInPresentationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInPresentationProvider.swift; sourceTree = "<group>"; };
 		D7B92D152ACB4DDF00CC56C8 /* MessageEventBus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageEventBus.swift; sourceTree = "<group>"; };
 		D7B92D172ACB4EF700CC56C8 /* EventAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAssembly.swift; sourceTree = "<group>"; };
 		D7BAFB282AF1CE9200D30C70 /* MessageCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCategory.swift; sourceTree = "<group>"; };
@@ -478,6 +480,14 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		D7AD11E12AF7329C005D6A83 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				D7AD11DF2AF72E06005D6A83 /* AppleSignInPresentationProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
 		D7B92D142ACB4DC200CC56C8 /* Event */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,6 +520,7 @@
 		D7BCFDB62A9D169B0041F339 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				D7AD11E12AF7329C005D6A83 /* Provider */,
 				D70458A72AB0ED5E008A950F /* Error */,
 				D70458A82AB0EDAA008A950F /* Extension */,
 				D70458AB2AB0F071008A950F /* Enums */,
@@ -776,6 +787,7 @@
 				D7E9D5AF2AD48546007306CB /* ReceiveMessagesUseCaseImpl.swift in Sources */,
 				D7BCFDB82A9D16CA0041F339 /* FirebaseError.swift in Sources */,
 				D7BCFDAE2A9CEEB10041F339 /* RepositoryAssembly.swift in Sources */,
+				D7AD11E02AF72E06005D6A83 /* AppleSignInPresentationProvider.swift in Sources */,
 				D73E132A2AB9DA05001A2509 /* ChatEntity.swift in Sources */,
 				D73E132E2AB9DA80001A2509 /* ChatDomain.swift in Sources */,
 				D7C34A5E2AAF546E00D2F4D6 /* FriendStatus.swift in Sources */,

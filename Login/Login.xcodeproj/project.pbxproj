@@ -24,6 +24,8 @@
 		D794034A2A7BF11300B61F13 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79403492A7BF11300B61F13 /* LoginViewController.swift */; };
 		D79403552A7BF2CA00B61F13 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79403542A7BF2CA00B61F13 /* SignUpViewController.swift */; };
 		D79403572A7BF2D800B61F13 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79403562A7BF2D800B61F13 /* SignInViewController.swift */; };
+		D7AD11DC2AF724FD005D6A83 /* LoginWithAppleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AD11DB2AF724FD005D6A83 /* LoginWithAppleUseCase.swift */; };
+		D7AD11DE2AF72516005D6A83 /* LoginWithAppleUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AD11DD2AF72516005D6A83 /* LoginWithAppleUseCaseImpl.swift */; };
 		D7BCFDB52A9CF01F0041F339 /* LoginAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BCFDB42A9CF01F0041F339 /* LoginAssembly.swift */; };
 		D7BCFDBA2A9D252E0041F339 /* ConfigureGoogleIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BCFDB92A9D252E0041F339 /* ConfigureGoogleIdUseCase.swift */; };
 		D7BCFDBC2A9D258D0041F339 /* ConfigureGoogleIdUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BCFDBB2A9D258D0041F339 /* ConfigureGoogleIdUseCaseImpl.swift */; };
@@ -62,6 +64,8 @@
 		D794034C2A7BF15B00B61F13 /* UIComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79403542A7BF2CA00B61F13 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D79403562A7BF2D800B61F13 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		D7AD11DB2AF724FD005D6A83 /* LoginWithAppleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleUseCase.swift; sourceTree = "<group>"; };
+		D7AD11DD2AF72516005D6A83 /* LoginWithAppleUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleUseCaseImpl.swift; sourceTree = "<group>"; };
 		D7BCFDB42A9CF01F0041F339 /* LoginAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAssembly.swift; sourceTree = "<group>"; };
 		D7BCFDB92A9D252E0041F339 /* ConfigureGoogleIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureGoogleIdUseCase.swift; sourceTree = "<group>"; };
 		D7BCFDBB2A9D258D0041F339 /* ConfigureGoogleIdUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureGoogleIdUseCaseImpl.swift; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 				D7BCFDBB2A9D258D0041F339 /* ConfigureGoogleIdUseCaseImpl.swift */,
 				D7BCFDC22A9D2A2B0041F339 /* LoginWithGoogleUseCase.swift */,
 				D7BCFDC42A9D2C110041F339 /* LoginWithGoogleUseCaseImpl.swift */,
+				D7AD11DB2AF724FD005D6A83 /* LoginWithAppleUseCase.swift */,
+				D7AD11DD2AF72516005D6A83 /* LoginWithAppleUseCaseImpl.swift */,
 				D77D60F12A9E6C9A00586054 /* SignUpUseCase.swift */,
 				D77D60F32A9E6CA400586054 /* SignUpUseCaseImpl.swift */,
 				D77D60F52A9E6CAD00586054 /* SignInUseCase.swift */,
@@ -371,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7AD11DC2AF724FD005D6A83 /* LoginWithAppleUseCase.swift in Sources */,
 				D79403552A7BF2CA00B61F13 /* SignUpViewController.swift in Sources */,
 				D7BCFDB52A9CF01F0041F339 /* LoginAssembly.swift in Sources */,
 				D794034A2A7BF11300B61F13 /* LoginViewController.swift in Sources */,
@@ -384,6 +391,7 @@
 				D77D60F62A9E6CAD00586054 /* SignInUseCase.swift in Sources */,
 				D77D60F82A9E6CB600586054 /* SignInUseCaseImpl.swift in Sources */,
 				D77D60FC2A9E6CCF00586054 /* ForgotPasswordUseCaseImpl.swift in Sources */,
+				D7AD11DE2AF72516005D6A83 /* LoginWithAppleUseCaseImpl.swift in Sources */,
 				D7BCFDC32A9D2A2B0041F339 /* LoginWithGoogleUseCase.swift in Sources */,
 				D77D60FE2A9E746000586054 /* ForgotPasswordViewController.swift in Sources */,
 				D79403572A7BF2D800B61F13 /* SignInViewController.swift in Sources */,

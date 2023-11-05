@@ -20,6 +20,8 @@ public final class LoginViewController: UIViewController {
     
     let logo = CTLogoView()
     let loginWithGoogle = CTButton(title: "", image: Images.google)
+    let loginWithApple = CTButton(title: "", image: Icons.apple)
+    let loginWithView = UIStackView()
     let signIn = CTButton(title: "Sign In", image: nil, style: .tinted())
     let signUp = CTButton(title: "Sign Up")
     let alert = ErrorAlert.make(title: "Fail to Login", message: "Fail to login with google, try again latter.")
@@ -46,8 +48,10 @@ public final class LoginViewController: UIViewController {
     }
     
     private func configure() {
+        configureLoginWithView()
+        
         view.addSubview(logo)
-        view.addSubview(loginWithGoogle)
+        view.addSubview(loginWithView)
         view.addSubview(signIn)
         view.addSubview(signUp)
         
@@ -57,10 +61,8 @@ public final class LoginViewController: UIViewController {
             logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
             logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            loginWithGoogle.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-            loginWithGoogle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginWithGoogle.heightAnchor.constraint(equalToConstant: 75),
-            loginWithGoogle.widthAnchor.constraint(equalToConstant: 75),
+            loginWithView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            loginWithView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             signIn.bottomAnchor.constraint(equalTo: loginWithGoogle.topAnchor, constant: -15),
             signIn.leadingAnchor.constraint(equalTo: logo.leadingAnchor),
@@ -71,11 +73,31 @@ public final class LoginViewController: UIViewController {
             signUp.trailingAnchor.constraint(equalTo: signIn.trailingAnchor),
         ])
     }
+    
+    private func configureLoginWithView() {
+        loginWithView.axis = .horizontal
+        loginWithView.spacing = 10
+        loginWithView.alignment = .center
+        
+        loginWithView.addArrangedSubview(loginWithGoogle)
+        loginWithView.addArrangedSubview(loginWithApple)
+        
+        NSLayoutConstraint.activate([
+            loginWithGoogle.heightAnchor.constraint(equalToConstant: 75),
+            loginWithGoogle.widthAnchor.constraint(equalToConstant: 75),
+            
+            loginWithApple.heightAnchor.constraint(equalToConstant: 75),
+            loginWithApple.widthAnchor.constraint(equalToConstant: 75),
+        ])
+        
+        loginWithView.translatesAutoresizingMaskIntoConstraints = false
+    }
 }
 
 extension LoginViewController {
     private func actions() {
         loginWithGoogle.addTarget(self, action: #selector(loginWithGoogleSelector), for: .touchUpInside)
+        loginWithApple.addTarget(self, action: #selector(loginWithAppleSelector), for: .touchUpInside)
         signUp.addTarget(self, action: #selector(signUpSelector), for: .touchUpInside)
         signIn.addTarget(self, action: #selector(signInSelector), for: .touchUpInside)
     }
@@ -90,7 +112,7 @@ extension LoginViewController {
     
     @objc private func loginWithGoogleSelector() {
         Task {
-            startLoginWithGoogle()
+            startLogin(with: .google)
             do {
                 try await viewModel?.loginWithGoogle()
                 delegate?.navigateToApp()
@@ -98,21 +120,49 @@ extension LoginViewController {
                 print(error)
                 present(alert, animated: true, completion: nil)
             }
-            stopLoginWithGoogle()
+            stopLogin(with: .google)
         }
     }
     
-    private func startLoginWithGoogle() {
+    @objc private func loginWithAppleSelector() {
+        Task {
+            startLogin(with: .apple)
+            do {
+                try await viewModel?.loginWithApple()
+                delegate?.navigateToApp()
+            } catch {
+                print(error)
+                present(alert, animated: true, completion: nil)
+            }
+            stopLogin(with: .apple)
+        }
+    }
+    
+    private enum LoaderType {
+        case google, apple
+    }
+    
+    private func startLogin(with loginType: LoaderType) {
         signIn.disable()
         signUp.disable()
         loginWithGoogle.disable()
-        loginWithGoogle.startLoading()
+        loginWithApple.disable()
+        if loginType == .google {
+            loginWithGoogle.startLoading()
+        } else if loginType == .apple {
+            loginWithApple.startLoading()
+        }
     }
     
-    private func stopLoginWithGoogle() {
+    private func stopLogin(with loginType: LoaderType) {
         signIn.enable()
         signUp.enable()
         loginWithGoogle.enable()
-        loginWithGoogle.stopLoading()
+        loginWithApple.enable()
+        if loginType == .google {
+            loginWithGoogle.stopLoading()
+        } else if loginType == .apple {
+            loginWithApple.stopLoading()
+        }
     }
 }

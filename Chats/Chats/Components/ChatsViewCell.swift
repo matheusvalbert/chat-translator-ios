@@ -84,4 +84,10 @@ class ChatsViewCell: UITableViewCell {
             numberOfMessages.removeFromSuperview()
         }
     }
+    
+    func getTag() -> Int {
+        let username = username.text
+        let tag = username?.components(separatedBy: "#")[1] ?? "0"
+        return Int(tag) ?? 0
+    }
 }

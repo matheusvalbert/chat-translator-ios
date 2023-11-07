@@ -28,7 +28,9 @@ extension ChatsViewController {
     }
     
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.navigateToChatMessages(friend: viewModel!.friends[indexPath.row])
+        let selectedCell = tableView.cellForRow(at: indexPath) as! ChatsViewCell
+        let friend = viewModel?.friends.first(where: { $0.tag == selectedCell.getTag() })
+        delegate?.navigateToChatMessages(friend: friend!)
     }
     
     public override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
